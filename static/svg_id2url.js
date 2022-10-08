@@ -1,0 +1,23 @@
+var svg_id2url = [
+  { "svg_id": "l1", "type": "filled", "light_name": "l1", "url": "/light/l1/toggle" },
+  { "svg_id": "l2", "type": "filled", "light_name": "l2", "url": "/light/l2/toggle" },
+  { "svg_id": "l3", "type": "filled", "light_name": "l3", "url": "/light/l3/toggle" },
+  { "svg_id": "l4", "type": "filled", "light_name": "l4", "url": "/light/l4/toggle" },
+  { "svg_id": "l5", "type": "filled", "light_name": "l5", "url": "/light/l5/toggle" },
+  { "svg_id": "l6", "type": "filled", "light_name": "l6", "url": "/light/l6/toggle" },
+  { "svg_id": "l7", "type": "filled", "light_name": "l7", "url": "/light/l7/toggle" },
+  { "svg_id": "l8", "type": "filled", "light_name": "l8", "url": "/light/l8/toggle" },
+  { "svg_id": "l9", "type": "filled", "light_name": "l9", "url": "/light/l9/toggle" },
+  { "svg_id": "l10", "type": "filled", "light_name": "l10", "url": "/light/l10/toggle" },
+  { "svg_id": "l11", "type": "filled", "light_name": "l11", "url": "/light/l11/toggle" },
+  { "svg_id": "l12", "type": "filled", "light_name": "l12", "url": "/light/l12/toggle" },
+  { "svg_id": "l13", "type": "filled", "light_name": "l13", "url": "/light/l13/toggle" },
+  { "svg_id": "l14", "type": "filled", "light_name": "l14", "url": "/light/l14/toggle" },
+  { "svg_id": "l15", "type": "filled", "light_name": "l15", "url": "/light/l15/toggle" },
+  { "svg_id": "l16", "type": "filled", "light_name": "l16", "url": "/light/l16/toggle" },
+  { "svg_id": "l17", "type": "filled", "light_name": "l17", "url": "/light/l17/toggle" },
+  { "svg_id": "l18", "type": "filled", "light_name": "l18", "url": "/light/l18/toggle" },
+  { "svg_id": "l19", "type": "filled", "light_name": "l19", "url": "/light/l19/toggle" },
+  { "svg_id": "l20", "type": "filled", "light_name": "l20", "url": "/light/l20/toggle" },
+  { "svg_id": "l21", "type": "filled", "light_name": "l21", "url": "/light/l21/toggle" }
+];
