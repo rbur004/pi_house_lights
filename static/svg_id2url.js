@@ -1,11 +1,11 @@
 var svg_id2url = [
-  { "svg_id": "l1", "type": "filled", "light_name": "l1", "url": "/light/l1/toggle" },
+  { "svg_id": "l1", "type": "filled", "light_name": "bedroom_4", "url": "/light/bedroom_4/toggle" },
   { "svg_id": "l2", "type": "filled", "light_name": "l2", "url": "/light/l2/toggle" },
-  { "svg_id": "l3", "type": "filled", "light_name": "l3", "url": "/light/l3/toggle" },
-  { "svg_id": "l4", "type": "filled", "light_name": "l4", "url": "/light/l4/toggle" },
-  { "svg_id": "l5", "type": "filled", "light_name": "l5", "url": "/light/l5/toggle" },
-  { "svg_id": "l6", "type": "filled", "light_name": "l6", "url": "/light/l6/toggle" },
-  { "svg_id": "l7", "type": "filled", "light_name": "l7", "url": "/light/l7/toggle" },
+  { "svg_id": "l3", "type": "filled", "light_name": "bedroom_3", "url": "/light/bedroom_3/toggle" },
+  { "svg_id": "l4", "type": "filled", "light_name": "ds_bath_light", "url": "/light/ds_bath_light/toggle" },
+  { "svg_id": "l5", "type": "filled", "light_name": "hall", "url": "/light/hall/toggle" },
+  { "svg_id": "l6", "type": "filled", "light_name": "bedroom_2", "url": "/light/bedroom_2/toggle" },
+  { "svg_id": "l7", "type": "filled", "light_name": "office", "url": "/light/office/toggle" },
   { "svg_id": "l8", "type": "filled", "light_name": "l8", "url": "/light/l8/toggle" },
   { "svg_id": "l9", "type": "filled", "light_name": "l9", "url": "/light/l9/toggle" },
   { "svg_id": "l10", "type": "filled", "light_name": "l10", "url": "/light/l10/toggle" },
@@ -19,5 +19,12 @@ var svg_id2url = [
   { "svg_id": "l18", "type": "filled", "light_name": "l18", "url": "/light/l18/toggle" },
   { "svg_id": "l19", "type": "filled", "light_name": "l19", "url": "/light/l19/toggle" },
   { "svg_id": "l20", "type": "filled", "light_name": "l20", "url": "/light/l20/toggle" },
-  { "svg_id": "l21", "type": "filled", "light_name": "l21", "url": "/light/l21/toggle" }
+  { "svg_id": "l21", "type": "filled", "light_name": "l21", "url": "/light/l21/toggle" },
+
+  { "svg_id": "fan1", "type": "filled", "light_name": "fan1", "url": "/fan/fan1/toggle" },
+  { "svg_id": "fan2", "type": "filled", "light_name": "fan2", "url": "/fan/fan2/toggle" },
+  { "svg_id": "fan3", "type": "filled", "light_name": "fan3", "url": "/fan/fan3/toggle" },
+  { "svg_id": "fan4", "type": "filled", "light_name": "fan4", "url": "/fan/fan4/toggle" },
+  { "svg_id": "fan5", "type": "filled", "light_name": "ds_bath_fan", "url": "/fan/ds_bath_fan/toggle" }
+
 ];

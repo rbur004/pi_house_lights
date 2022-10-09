@@ -73,16 +73,31 @@ def status():
 
     return jsonify({"result": False, "error": "Use GET"})
 
+@app.route("/fan/<fan_name>/toggle", methods=["GET"])
+def toggle_fan(fan_name):
+    global lights
+    # Check we have a light name that we know
+
+    if fan_name in lights:
+        print("Found Light ", fan_name)
+        data = {}
+        lights[fan_name].toggle()
+        data[fan_name] = {"on": lights[fan_name].on, "name": fan_name}
+        return jsonify({"result": True, "status": data})
+
+    return jsonify({"result": False, "error": "Unknown light {}".format(fan_name)})
+
+
 
 if __name__ == "__main__":
     lights = {
-        "l1": LightState("l1"),
+        "bedroom_4": LightState("bedroom_4"),
         "l2": LightState("l2"),
-        "l3": LightState("l3"),
-        "l4": LightState("l4"),
-        "l5": LightState("l5"),
-        "l6": LightState("l6"),
-        "l7": LightState("l7"),
+        "bedroom_3": LightState("bedroom_3"),
+        "ds_bath_light": LightState("ds_bath_light"),
+        "hall": LightState("hall"),
+        "bedroom_2": LightState("bedroom_2"),
+        "office": LightState("office"),
         "l8": LightState("l8"),
         "l9": LightState("l9"),
         "l10": LightState("l10"),
@@ -97,5 +112,11 @@ if __name__ == "__main__":
         "l19": LightState("l19"),
         "l20": LightState("l20"),
         "l21": LightState("l21"),
+
+        "fan1": LightState("fan1"),
+        "fan2": LightState("fan2"),
+        "fan3": LightState("fan3"),
+        "fan4": LightState("fan4"),
+        "ds_bath_fan": LightState("ds_bath_fan"),
     }
     app.run()

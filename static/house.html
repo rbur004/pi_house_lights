@@ -1,89 +1,90 @@
+
 <html>
 
-<head>
-  <title>House Lights</title>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/wikk_ajax-min.js"></script>
-  <script src="svg_id2url.js"></script>
-  <script>
-    var svg_object
-    var svg_document
-
-    function update_lights(data) {
-      // loop through the svg_ids that we know of, looking for ones we have a status on
-      for(var s in window.svg_id2url ) {
-        // Get the svg object we will
-        var target = window.svg_document.getElementById(window.svg_id2url[s]["svg_id"]);
-        // Light status records from the server, indexed by light name
-        var status_record = data.status[window.svg_id2url[s]["light_name"]];
-
-        if(target != null && status_record != null) {
-          the_colour = status_record.on ? "#00ff00" : "red"
-          // See if we want to colour this object. It might just a region to click.
-          if(window.svg_id2url[s]["type"] == "filled") {
-            target.style.fill = the_colour;
-          } else if(window.svg_id2url[s]["type"] == "line") {
-            target.style.stroke = the_colour;
+  <head>
+    <title>House Lights</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/wikk_ajax-min.js"></script>
+    <script src="svg_id2url.js"></script>
+    <script>
+      var svg_object
+      var svg_document
+  
+      function update_lights(data) {
+        // loop through the svg_ids that we know of, looking for ones we have a status on
+        for(var s in window.svg_id2url ) {
+          // Get the svg objects we care about
+          var target = window.svg_document.getElementById(window.svg_id2url[s]["svg_id"]);
+          // Light status records from the server, indexed by light name
+          var status_record = data.status[window.svg_id2url[s]["light_name"]];
+  
+          if(target != null && status_record != null) {
+            the_colour = status_record.on ? "#00ff00" : "red"
+            // See if we want to colour this object. It might just a region to click.
+            if(window.svg_id2url[s]["type"] == "filled") {
+              target.style.fill = the_colour;
+            } else if(window.svg_id2url[s]["type"] == "line") {
+              target.style.stroke = the_colour;
+            }
           }
         }
       }
-    }
-
-    function exec_error(jqXHR, textStatus, errorMessage) { }  //Called on failure
-    function exec_complete(data) {} // We don't do anything on completion
-    function exec_callback(data) {
-      if(data != null && data.result == false) {
-        alert(data.error)
-      } else {
-        update_lights(data)
-      }
-    }
-
-    // Called by on_click() calls, embedded in the SVG
-    function exec_url(id) {
-      for (var s in window.svg_id2url) {
-        if (window.svg_id2url[s]["svg_id"] == id) {
-          if (window.svg_id2url[s]["url"] != null && window.svg_id2url[s]["url"] != "") {
-            wikk_ajax.ajax_get_call(window.svg_id2url[s]["url"], "", exec_callback, exec_error, exec_complete, 'json') 
-          } else { alert("No URL for svg id: " + id); }
-          return;
+  
+      function exec_error(jqXHR, textStatus, errorMessage) { }  //Called on failure
+      function exec_complete(data) {} // We don't do anything on completion
+      function exec_callback(data) {
+        if(data != null && data.result == false) {
+          alert(data.error)
+        } else {
+          update_lights(data)
         }
       }
-    }
-
-    function light_status_error(jqXHR, textStatus, errorMessage) { }  //Called on failure
-    function light_status_complete(data) {} // We don't do anything on completion
-    // Called when the webserver returns json from get_light_status()
-    function light_status_callback(data) {
-      if(data != null && data.result == false) {
-        alert(data.error)
-      } else {
-        update_lights(data)
+  
+      // Called by on_click() calls, embedded in the SVG
+      function exec_url(id) {
+        for (var s in window.svg_id2url) {
+          if (window.svg_id2url[s]["svg_id"] == id) {
+            if (window.svg_id2url[s]["url"] != null && window.svg_id2url[s]["url"] != "") {
+              wikk_ajax.ajax_get_call(window.svg_id2url[s]["url"], "", exec_callback, exec_error, exec_complete, 'json') 
+            } else { alert("No URL for svg id: " + id); }
+            return;
+          }
+        }
       }
-      get_light_status(30000); //Look again in 30s
-    }
-
-    function get_light_status(delay) {
-      // wait for delay ms, then make the call. This is non-blocking and can be called from a callback
-      setTimeout(function () { wikk_ajax.ajax_get_call('/lights/status', "", light_status_callback, light_status_error, light_status_complete, 'json'); }, delay );
-    }
-
-    function init() {
-      svg_object = document.getElementById("house_svg");
-      // Wait until the SVG object has loaded, before proceeding
-      svg_object.addEventListener("load", function() {
-        window.svg_document = svg_object.getSVGDocument();
-        get_light_status(0);
-      }, false); 
-    }
-
-    $(document).ready( function(){init();} )
-  </script>
-</head>
-
-<body>
-  <object class="svgClass" id="house_svg" data="house.svg" type="image/svg+xml">
-  </object>
-</body>
-
-</html>
+  
+      function light_status_error(jqXHR, textStatus, errorMessage) { }  //Called on failure
+      function light_status_complete(data) {} // We don't do anything on completion
+      // Called when the webserver returns json from get_light_status()
+      function light_status_callback(data) {
+        if(data != null && data.result == false) {
+          alert(data.error)
+        } else {
+          update_lights(data)
+        }
+        get_light_status(30000); //Look again in 30s
+      }
+  
+      function get_light_status(delay) {
+        // wait for delay ms, then make the call. This is non-blocking and can be called from a callback
+        setTimeout(function () { wikk_ajax.ajax_get_call('/lights/status', "", light_status_callback, light_status_error, light_status_complete, 'json'); }, delay );
+      }
+  
+      function init() {
+        svg_object = document.getElementById("house_svg");
+        // Wait until the SVG object has loaded, before proceeding
+        svg_object.addEventListener("load", function() {
+          window.svg_document = svg_object.getSVGDocument();
+          get_light_status(0);
+        }, false); 
+      }
+  
+      $(document).ready( function(){init();} )
+    </script>
+  </head>
+  
+  <body>
+    <object class="svgClass" id="house_svg" data="house.svg" type="image/svg+xml">
+    </object>
+  </body>
+  
+  </html>
